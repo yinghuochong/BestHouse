@@ -1,0 +1,9 @@
+{
+  "db_info": {
+  	"db_engine":"mysql",
+    "db": "lian-jia",
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "123456"
+  }
+}
