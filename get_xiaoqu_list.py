@@ -57,7 +57,7 @@ def main():
         offset = 0
         has_more_data = True
         while has_more_data:
-            time.sleep(random.randint(0,3))
+            time.sleep(random.randint(0,config.request_max_gap))
             communities,has_more_data,total_count = get_community_list(city_id,offset,district_id,district_name)
             if offset == 0:
                 xiaoqu_number = xiaoqu_number + total_count

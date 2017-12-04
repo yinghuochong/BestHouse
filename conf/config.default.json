@@ -5,5 +5,8 @@
     "host": "127.0.0.1",
     "user": "root",
     "password": "123456"
-  }
+  },
+  "request_max_gap":30,
+  "debug":false,
+  "db_echo":false
 }

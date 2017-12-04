@@ -7,7 +7,6 @@ from utils.client import get_data
 from models.orm import Session
 from models.city import City,Community,CommunityInfo,OldHouse,HistoryRecord,RentHouse
 
-
 def get_xiaoqu_info(community_id):
     """
     获取小区详细信息
@@ -116,7 +115,7 @@ def main():
         offset = 0
         has_more_data = True
         while has_more_data:
-            time.sleep(random.randint(0,3))
+            time.sleep(random.randint(0,config.request_max_gap))
             oldhouses,has_more_data = get_ershou_list(city_id,community_id,offset)
             offset = offset + 20
             for aOldhouse in oldhouses:
@@ -130,7 +129,7 @@ def main():
         offset = 0
         has_more_data = True
         while has_more_data:
-            time.sleep(random.randint(0,3))
+            time.sleep(random.randint(0,config.request_max_gap))
             records,has_more_data,total_count = get_history_list(city_id,community_id,offset)
             offset = offset + 20
             for aRecord in records:
@@ -143,7 +142,7 @@ def main():
         offset = 0
         has_more_data = True
         while has_more_data:
-            time.sleep(random.randint(0,3))
+            time.sleep(random.randint(0,config.request_max_gap))
             rents,has_more_data,total_count = get_zufang_list(city_id,community_id,offset)
             offset = offset + 20
             for aRent in rents:

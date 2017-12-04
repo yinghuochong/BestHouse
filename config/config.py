@@ -14,6 +14,7 @@ class Config:
         self.city_id = 0
         self.debug = False
         self.db_echo = False
+        self.request_max_gap = 30
         self.log_format = log_format
 
         self.db_info = {
@@ -32,7 +33,7 @@ class Config:
     @classmethod
     def load(cls, d):
         the_config = Config()
-
+        the_config.request_max_gap = d.get('request_max_gap', 30)
         the_config.debug = d.get('debug', False)
         the_config.db_echo = d.get('db_echo', False)
         the_config.db_info.update(d.get('db_info', {}))
