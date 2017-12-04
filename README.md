@@ -1,7 +1,7 @@
 # Get BestHouse
 Get info from lianjia app
 
-###准备工作：
+### 准备工作：
 
 1、安装 **python3.6** 以上版本
 
@@ -15,7 +15,7 @@ Get info from lianjia app
 
 `pip3 install -r requirements.txt`
 
-###使用方法：
+### 使用方法：
 
 1、修改配置：
 在conf目录下新建 config.json，配置数据库信息
@@ -47,7 +47,7 @@ Get info from lianjia app
 
 
 
-###备注
+### 备注
 Thanks [CaoZ](https://github.com/CaoZ/Fast-LianJia-Crawler)
 
 ref:[https://github.com/CaoZ/Fast-LianJia-Crawler](https://github.com/CaoZ/Fast-LianJia-Crawler)
