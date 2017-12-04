@@ -1,7 +1,7 @@
-# encoding: utf-8
 import base64
 import hashlib
 import time
+import logging
 
 import requests
 
@@ -16,7 +16,13 @@ def get_data(url, payload, method='GET'):
         'Authorization': get_token(payload)
     }
     func = requests.get if method == 'GET' else requests.post
-    r = func(url, payload, headers=headers)
+    r = {}
+    try:
+        r = func(url, payload, headers=headers)    
+    except Exception as e:
+        logging.info('请求出错：'+str(e))
+        return r
+    
 
     return parse_data(r)
 
