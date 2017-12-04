@@ -1,3 +1,4 @@
+# encoding: utf-8
 import logging
 from .orm import Base
 from sqlalchemy import Column, types,PrimaryKeyConstraint

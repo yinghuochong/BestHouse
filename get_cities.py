@@ -1,3 +1,4 @@
+# encoding: utf-8
 import logging
 from config.config import config
 from utils.client import get_data
