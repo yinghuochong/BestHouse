@@ -6,7 +6,7 @@
     "user": "root",
     "password": "123456"
   },
-  "request_max_gap":30,
+  "request_max_gap":3,
   "debug":false,
   "db_echo":false
 }
