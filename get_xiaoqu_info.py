@@ -207,7 +207,8 @@ def main():
     if not city:
         logging.error('不支持该城市 ：{}'.format(city_id))
         return
-    allcommunities = db_session.query(Community).filter(Community.city_id == city_id).all()
+    allcommunities = db_session.query(Community).filter(Community.city_id == city_id,Community.community_id =='1111027375191').all()
+    district = None
     if district_id and district_id != 0:
         alldistricts = db_session.query(District).all()
         district = db_session.query(District).filter(
@@ -224,8 +225,14 @@ def main():
         Community).filter(Community.city_id == city_id, Community.district_name == district.district_name).all()
     
     total_communities = len(allcommunities)
+
+    show_district_id = 0
+    show_district_name = ""
+    if district:
+        show_district_id = district_id
+        show_district_name = district.district_name
     logging.info('开始按小区抓取， 城市：{} ,行政区：{}({})， 共有小区 ：{}'.format(
-        city_id, district_id, district.district_name, len(allcommunities)))
+        city_id, show_district_id,show_district_name , len(allcommunities)))
     index = 1
     for aCommunity in allcommunities:
         # 处理小区详细信息
@@ -298,7 +305,7 @@ def main():
             get_rent_historys(db_session, city_id, community_id, 0)
         logging.info('完成获取该小区租房记录信息：{}'.format(community_id))
     logging.info('完成小区信息抓取， 城市：{} ,行政区：{}({})'.format(
-        city_id, district_id, district_name))
+        city_id, show_district_id, show_district_name))
     db_session.commit()
     db_session.close()
 
