@@ -238,14 +238,10 @@ def main():
         db_session.merge(community_info)
         db_session.commit()
 
-        _, _, oldhouseNum = get_ershou_list(
-            city_id, community_id, 0, 0, 0)
-        _, _, recordNum = get_history_list(format
-            city_id, community_id, 0, 0, 0)
-        _, _, rentNum = get_zufang_list(
-            city_id, community_id, 0, 0)
-        _, _, rentRecordNum = get_zufang_history(
-            city_id, community_id, 0, 0)
+        _, _, oldhouseNum = get_ershou_list(city_id, community_id, 0, 0, 0)
+        _, _, recordNum = get_history_list( city_id, community_id, 0, 0, 0)
+        _, _, rentNum = get_zufang_list(city_id, community_id, 0, 0)
+        _, _, rentRecordNum = get_zufang_history(city_id, community_id, 0, 0)
 
         # 获取小区二手房信息
         logging.info('开始获取该小区二手房信息：{}'.format(community_id))
