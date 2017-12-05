@@ -207,7 +207,7 @@ def main():
     if not city:
         logging.error('不支持该城市 ：{}'.format(city_id))
         return
-    allcommunities = db_session.query(Community).filter(Community.city_id == city_id,Community.community_id =='1111027375191').all()
+    allcommunities = db_session.query(Community).filter(Community.city_id == city_id).all()
     district = None
     if district_id and district_id != 0:
         alldistricts = db_session.query(District).all()
