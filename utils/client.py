@@ -16,7 +16,7 @@ def get_data(url, payload, method='GET'):
         'Authorization': get_token(payload)
     }
     func = requests.get if method == 'GET' else requests.post
-    r = {}
+    r = {"total_count":0,"has_more_data":False}
     try:
         r = func(url, payload, headers=headers)    
     except Exception as e:
