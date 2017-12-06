@@ -16,26 +16,29 @@ def get_data(url, payload, method='GET'):
         'Authorization': get_token(payload)
     }
     func = requests.get if method == 'GET' else requests.post
-    r = {"total_count":0,"has_more_data":False}
+    r = {"total_count": 0, "has_more_data": False}
     try:
-        r = func(url, payload, headers=headers)    
+        r = func(url, payload, headers=headers)
     except Exception as e:
-        logging.info('请求出错：'+str(e))
+        logging.error('请求出错：' + str(e))
         return r
-    
 
     return parse_data(r)
 
 
 def parse_data(response):
-    as_json = response.json()
-
-    if as_json['errno']:
-        # 发生了错误
-        raise Exception('请求出错了: ' + as_json['error'])
-
-    else:
-        return as_json['data']
+    r = {"total_count": 0, "has_more_data": False}
+    try:
+        as_json = response.json()
+        if as_json['errno']:
+            # 发生了错误
+            logging.error('请求出错了: ' + as_json['error'])
+            return r
+        else:
+            return as_json['data']
+    except Exception as e:
+        logging.error('解析出错：' + str(e))
+        return r
 
 
 def get_token(params):

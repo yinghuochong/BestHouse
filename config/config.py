@@ -4,12 +4,18 @@ import json
 import logging
 import sys
 from pathlib import Path
+import time
 
 log_format = '%(asctime)s %(name)s[%(module)s] %(levelname)s: %(message)s'
-logging.basicConfig(format=log_format, level=logging.INFO)
+log_file = 'logs/{}.log'.format(time.strftime(
+    "%Y-%m-%d-%H-%M-%S", time.localtime()))
+print(log_file)
+logging.basicConfig(format=log_format, level=logging.INFO,
+                    filename=log_file, filemode='a')
 
 
 class Config:
+
     def __init__(self):
         self.city_id = 0
         self.district_id = 0
@@ -45,8 +51,10 @@ class Config:
 def load_config():
     parser = argparse.ArgumentParser()
     parser.add_argument('-c', '--config', help='config file name')
-    parser.add_argument('city_id', help='city id', type=int, nargs='?', default=110000)
-    parser.add_argument('district_id', help='district_id id', type=int, nargs='?', default=0)
+    parser.add_argument('city_id', help='city id',
+                        type=int, nargs='?', default=110000)
+    parser.add_argument('district_id', help='district_id id',
+                        type=int, nargs='?', default=0)
     args = parser.parse_args()
 
     config_name = args.config or 'config.json'
