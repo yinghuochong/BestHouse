@@ -160,6 +160,7 @@ class CommunityInfo(Base):
         self.price = ''
         self.history_record = ''
         self.rent_number = ''
+        self.brief_list = ''
         if info.__contains__("basic_info"):
             basic_info = info['basic_info']
             self.community_id = basic_info['id']
