@@ -44,6 +44,14 @@ Get info from lianjia app
 
 结果会写到 community_info 、hisoty_records、rent_houses、old_houses 表
 
+6、根据城市编号、行政区编号 获取指定行政区所有小区的详细信息，包括小区详情、小区在售二手房、小区成交历史、小区在租房源
+
+如：获取 昌平区 所有小区详情
+
+`python3 get_xiaoqu_info.py 110000 23008611` 
+
+结果会写到 community_info 、hisoty_records、rent_houses、old_houses 表
+
 
 
 
