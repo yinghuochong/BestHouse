@@ -12,7 +12,10 @@ log_file = 'logs/{}.log'.format(time.strftime(
 print(log_file)
 logging.basicConfig(format=log_format, level=logging.INFO,
                     filename=log_file, filemode='a')
-
+console = logging.StreamHandler()
+formatter = logging.Formatter(log_format)
+console.setFormatter(formatter) 
+logging.getLogger().addHandler(console)  
 
 class Config:
 

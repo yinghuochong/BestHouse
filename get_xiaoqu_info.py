@@ -207,7 +207,7 @@ def main():
     if not city:
         logging.error('不支持该城市 ：{}'.format(city_id))
         return
-    allcommunities = db_session.query(Community).filter(Community.city_id == city_id).all()
+    allcommunities = db_session.query(Community).filter(Community.city_id == city_id).all()#,Community.community_id=='1111027376258'
     district = None
     if district_id and district_id != 0:
         alldistricts = db_session.query(District).all()
@@ -290,7 +290,7 @@ def main():
         logging.info('开始获取该小区租房信息：{}'.format(community_id))
         # 如果记录数大于2000 ，会出现重复数据，会根据价格再次筛选
         if recordNum >= 2000:
-            for priceItem in xrange(1, 11):
+            for priceItem in range(1, 11):
                 get_rents(db_session, city_id, community_id, priceItem)
         else:
             get_rents(db_session, city_id, community_id, 0)
@@ -299,7 +299,7 @@ def main():
         logging.info('开始获取该小区租房记录信息：{}'.format(community_id))
         # 如果记录数大于2000 ，会出现重复数据，会根据价格再次筛选
         if recordNum >= 2000:
-            for priceItem in xrange(1, 11):
+            for priceItem in range(1, 11):
                 get_rent_historys(db_session, city_id, community_id, priceItem)
         else:
             get_rent_historys(db_session, city_id, community_id, 0)
