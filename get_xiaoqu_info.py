@@ -289,7 +289,7 @@ def main():
         # 获取小区成交信息
         logging.info('开始获取该小区租房信息：{}'.format(community_id))
         # 如果记录数大于2000 ，会出现重复数据，会根据价格再次筛选
-        if recordNum >= 2000:
+        if rentNum >= 2000:
             for priceItem in range(1, 11):
                 get_rents(db_session, city_id, community_id, priceItem)
         else:
@@ -298,7 +298,7 @@ def main():
         # 获取小区租房记录
         logging.info('开始获取该小区租房记录信息：{}'.format(community_id))
         # 如果记录数大于2000 ，会出现重复数据，会根据价格再次筛选
-        if recordNum >= 2000:
+        if rentRecordNum >= 2000:
             for priceItem in range(1, 11):
                 get_rent_historys(db_session, city_id, community_id, priceItem)
         else:
